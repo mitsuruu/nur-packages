@@ -1,4 +1,4 @@
-{ libsForQt5, stdenvNoCC, fetchFromGitHub, pkgs }:
+{ lib, libsForQt5, stdenvNoCC, fetchFromGitHub, pkgs }:
 stdenvNoCC.mkDerivation {
   pname = "tokyo-night-sddm";
   version = "1..0";
