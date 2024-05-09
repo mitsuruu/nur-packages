@@ -35,5 +35,9 @@
       });
 
       packages = forAllSystems (system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system});
+
+      overlay = forAllSystems (system: (final: prev: import ./default.nix {
+        pkgs = prev;
+      }));
     };
 }
