@@ -46,7 +46,6 @@ stdenv.mkDerivation {
     url = "https://git.suyu.dev/suyu/suyu";
     rev = "dfb9f06e5c46f251e4208adf1d4861e85b1d5eea";
     fetchSubmodules = true;
-    deepClone = true;
     sha256 = "sha256-50qCB0BnBhFuTjrI1xp20joYDOBs48uFi9Wg0313GpY=";
   };
 
