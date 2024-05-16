@@ -1,10 +1,10 @@
 { libsForQt5, stdenvNoCC, fetchFromGitHub, pkgs }:
-let 
+let
   wallpaper = builtins.fetchurl {
     url = "https://i.ibb.co/hdsSs3m/anime-beach.jpg";
     sha256 = "sha256:1vyw1mkzn5zdd25m3h9nfn0dg8hmmil5f42pzik5lkg7hh548rz5";
   };
-in 
+in
 stdenvNoCC.mkDerivation {
   pname = "tokyo-night-sddm";
   version = "1..0";

@@ -9,4 +9,6 @@
   macos-cursors = pkgs.callPackage ./pkgs/macOS-cursors { };
   tokyo-night-gtk-icons = pkgs.callPackage ./pkgs/tokyo-night-gtk-icons { };
   tokyo-night-sddm = pkgs.callPackage ./pkgs/tokyo-night-sddm { };
+
+  suyu = (pkgs.callPackage ./pkgs/suyu { }).suyu;
 }
