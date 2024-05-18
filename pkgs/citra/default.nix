@@ -1,4 +1,4 @@
-{ package ? "suyu", kdePackages, makeScopeWithSplicing', generateSplicesForMkScope }:
+{ package ? "citra", kdePackages, makeScopeWithSplicing', generateSplicesForMkScope }:
 makeScopeWithSplicing' {
   otherSplices = generateSplicesForMkScope "citraPackages";
   f = self: kdePackages // {

@@ -10,7 +10,6 @@
   tokyo-night-sddm = pkgs.callPackage ./pkgs/tokyo-night-sddm { };
 
   suyu = (pkgs.callPackage ./pkgs/suyu { }).suyu;
-  citraPackages = pkgs.callPackage ./pkgs/citra { };
   citra-canary = (pkgs.callPackage ./pkgs/citra { }).canary;
   citra-nightly = (pkgs.callPackage ./pkgs/citra { }).nightly;
 }
