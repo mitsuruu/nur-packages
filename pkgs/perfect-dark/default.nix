@@ -8,31 +8,6 @@ let
     hash = "sha256-ER5OCFENyrd7R4YCCHI/UldpUw6/zQjH7QniJOnEH/E=";
   };
 
-  icon64 = fetchurl {
-    url = "${iconBaseUrl}64x64.png";
-    hash = "sha256-7VlgfshbDqRtKjrbPM34EXphU0oyZCc6xUl61M8dbXc=";
-  };
-
-  icon48 = fetchurl {
-    url = "${iconBaseUrl}48x48.png";
-    hash = "sha256-Wu3NClRVgeXiYO8/69guTbBgR2+MCZ4N73snTt6MpCE=";
-  };
-
-  icon32 = fetchurl {
-    url = "${iconBaseUrl}32x32.png";
-    hash = "sha256-TKeEOppic9W5GPulBMutjMavwej0jlxsKwaWB9nL9X4=";
-  };
-
-  icon24 = fetchurl {
-    url = "${iconBaseUrl}24x24.png";
-    hash = "sha256-Xn0BIGKM+cxQH0Epo+kPe3S+fT2yiNPE6p5aeJAHe1I=";
-  };
-
-  icon16 = fetchurl {
-    url = "${iconBaseUrl}16x16.png";
-    hash = "sha256-HmjwEzabJvJnPHNzeNS96fay9KpIRCAy5h9iBZHKEbk=";
-  };
-
   ntscDesktopItem = makeDesktopItem {
     name = "pd";
     desktopName = "Perfect Dark (NTSC)";
@@ -82,19 +57,14 @@ pkgs.pkgsi686Linux.stdenv.mkDerivation rec {
 
   installPhase = ''
     runHook preInstall
-    mkdir -p $out/{bin,share/{applications/,icons/hicolor/{256x256/apps,64x64/apps,48x48/apps,32x32/apps,24x24/apps,16x16/apps}}}
+    mkdir -p $out/{bin,share/{applications/,icons/hicolor/scalable/apps/}}
     install -m755 -D pd $out/bin/pd
     install -m755 -D pd.pal $out/bin/pd.pal
     install -m755 -D pd.jpn $out/bin/pd.jpn
     cp "${ntscDesktopItem}/share/applications/pd.desktop" $out/share/applications/pd.desktop
     cp "${palDesktopItem}/share/applications/pd.pal.desktop" $out/share/applications/pd.pal.desktop
     cp "${jpnDesktopItem}/share/applications/pd.jpn.desktop" $out/share/applications/pd.jpn.desktop
-    cp ${icon256} $out/share/icons/hicolor/256x256/apps/pd.png
-    cp ${icon64} $out/share/icons/hicolor/64x64/apps/pd.png
-    cp ${icon48} $out/share/icons/hicolor/48x48/apps/pd.png
-    cp ${icon32} $out/share/icons/hicolor/32x32/apps/pd.png
-    cp ${icon24} $out/share/icons/hicolor/24x24/apps/pd.png
-    cp ${icon16} $out/share/icons/hicolor/16x16/apps/pd.png
+    cp ${icon256} $out/share/icons/hicolor/scalable/apps/pd.png
     runHook postInstall
   '';
 
