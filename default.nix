@@ -6,6 +6,7 @@
   # overlays = import ./overlays; # nixpkgs overlays
 
   macos-cursors = pkgs.callPackage ./pkgs/macOS-cursors { };
+  perfect-dark = pkgs.callPackage ./pkgs/perfect-dark { };
   tokyo-night-gtk-icons = pkgs.callPackage ./pkgs/tokyo-night-gtk-icons { };
   tokyo-night-sddm = pkgs.callPackage ./pkgs/tokyo-night-sddm { };
 
