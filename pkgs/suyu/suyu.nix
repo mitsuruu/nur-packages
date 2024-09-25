@@ -1,5 +1,4 @@
 { lib
-, pkgs
 , stdenv
 , fetchgit
 , nix-update-script
@@ -8,11 +7,11 @@
 , boost
 , catch2_3
 , cmake
+, compat-list
 , cpp-jwt
 , cubeb
 , discord-rpc
 , enet
-, ffmpeg-headless
 , fmt
 , glslang
 , libopus
@@ -21,6 +20,7 @@
 , lz4
 , nlohmann_json
 , nv-codec-headers-12
+, nx_tzdb
 , pkg-config
 , qtbase
 , qtmultimedia
@@ -33,20 +33,17 @@
 , yasm
 , zlib
 , zstd
-, ...
 }:
-let
-  nx_tzdb = pkgs.callPackage ./nx_tzdb.nix { };
-  compat-list = pkgs.callPackage ./compat-list.nix { };
-in
 stdenv.mkDerivation (finalAttrs: {
   pname = "suyu";
-  version = "0.0.4";
+  version = "dev-09-03-2024";
 
   src = fetchgit {
     url = "https://git.suyu.dev/suyu/suyu";
-    rev = "v${finalAttrs.version}";
-    sha256 = "sha256-GgLCbQI7u9neFxQq4borNhlg72FIYn+J5XkaK/7hpnQ=";
+    #    ref = "dev";
+    rev = "7a33aedc57c539682915e9cdc1eb51d5fc9b8183";
+    hash = "sha256-6EFHGGBfwDBWvAtteEc38GKLuXH2IvermSVvMACcSzk=";
+    fetchSubmodules = true;
   };
 
   nativeBuildInputs = [
@@ -70,14 +67,12 @@ stdenv.mkDerivation (finalAttrs: {
     # intentionally omitted: dynarmic - prefer vendored version for compatibility
     enet
 
-    # ffmpeg deps (also includes vendored)
-    # we do not use internal ffmpeg because cuda errors
+    # vendored ffmpeg deps
     autoconf
     yasm
     libva # for accelerated video decode on non-nvidia
     nv-codec-headers-12 # for accelerated video decode on nvidia
-    ffmpeg-headless
-    # end ffmpeg deps
+    # end vendored ffmpeg deps
 
     fmt
     # intentionally omitted: gamemode - loaded dynamically at runtime
@@ -119,8 +114,8 @@ stdenv.mkDerivation (finalAttrs: {
     "-DSUYU_USE_EXTERNAL_SDL2=OFF"
     "-DSUYU_USE_EXTERNAL_VULKAN_HEADERS=OFF"
 
-    # # don't use system ffmpeg, suyu uses internal APIs
-    # "-DSUYU_USE_BUNDLED_FFMPEG=ON"
+    # don't use system ffmpeg, suyu uses internal APIs
+    "-DSUYU_USE_BUNDLED_FFMPEG=ON"
 
     # don't check for missing submodules
     "-DSUYU_CHECK_SUBMODULES=OFF"
@@ -150,33 +145,32 @@ stdenv.mkDerivation (finalAttrs: {
       "-DTITLE_BAR_FORMAT_IDLE=${finalAttrs.pname} | ${finalAttrs.version} (nixpkgs) {}"
       "-DTITLE_BAR_FORMAT_RUNNING=${finalAttrs.pname} | ${finalAttrs.version} (nixpkgs) | {}"
     )
-
     # provide pre-downloaded tz data
     mkdir -p build/externals/nx_tzdb
     ln -s ${nx_tzdb} build/externals/nx_tzdb/nx_tzdb
   '';
 
+  # This must be done after cmake finishes as it overwrites the file
   postConfigure = ''
     ln -sf ${compat-list} ./dist/compatibility_list/compatibility_list.json
   '';
 
-
-  postInstall = "
+  postInstall = ''
     install -Dm444 $src/dist/72-suyu-input.rules $out/lib/udev/rules.d/72-suyu-input.rules
-  ";
+  '';
 
   passthru.updateScript = nix-update-script {
     extraArgs = [ "--version-regex" "mainline-0-(.*)" ];
   };
 
   meta = with lib; {
-    homepage = "https://suyu.dev";
-    changelog = "https://suyu.dev/blog";
+    homepage = "https://suyu-emu.org";
+    changelog = "https://suyu-emu.org/entry";
     description = "An experimental Nintendo Switch emulator written in C++";
     longDescription = ''
       An experimental Nintendo Switch emulator written in C++.
-      Using the master/ branch is recommended for general usage.
-      Using the dev branch is recommended if you would like to try out experimental features, with a cost of stability.
+      Using the mainline branch is recommended for general usage.
+      Using the early-access branch is recommended if you would like to try out experimental features, with a cost of stability.
     '';
     mainProgram = "suyu";
     platforms = [ "aarch64-linux" "x86_64-linux" ];
