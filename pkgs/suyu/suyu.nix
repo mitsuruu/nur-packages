@@ -164,6 +164,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   meta = with lib; {
+    broken = true;
     homepage = "https://suyu-emu.org";
     changelog = "https://suyu-emu.org/entry";
     description = "An experimental Nintendo Switch emulator written in C++";
