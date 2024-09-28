@@ -6,5 +6,6 @@ makeScopeWithSplicing' {
     nx_tzdb = self.callPackage ./nx_tzdb.nix { };
 
     suyu = self.callPackage ./suyu.nix { };
+    suyu-appimage = self.callPackage ./appimage.nix { };
   };
 }

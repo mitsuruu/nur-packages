@@ -22,7 +22,7 @@ pkgs.pkgsi686Linux.stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/fgsfdsfgs/perfect_dark/releases/download/ci-dev-build/pd-i686-linux.tar.gz";
-    hash = "sha256-7nkWfcXOsWt2qO4QkYMiqaPIULimhOgqoWsvsLvSrAo=";
+    hash = "sha256-/fh0yyHk91Ey7C7ZZjJkLgZoeKa6Uq38D6LEhwn/2eA=";
   };
 
   buildInputs = with pkgs.pkgsi686Linux; [
