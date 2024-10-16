@@ -177,7 +177,8 @@ stdenv.mkDerivation {
     '';
 
   meta = with lib; {
-    broken = (stdenv.isLinux && stdenv.isAarch64);
+    # broken = (stdenv.isLinux && stdenv.isAarch64);
+    broken = true;
     homepage = "https://citra-emu.org";
     description = "The ${branch} branch of an open-source emulator for the Nintendo 3DS";
     longDescription = ''
