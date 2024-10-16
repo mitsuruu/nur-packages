@@ -9,7 +9,7 @@
 , cpp-jwt
 , cryptopp
 , enet
-, ffmpeg
+, ffmpeg_6
 , fmt
 , gamemode
 , glslang
@@ -87,7 +87,7 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     pkg-config
-    ffmpeg
+    ffmpeg_6
     glslang
   ] ++ lib.optionals enableQt [ wrapQtAppsHook ];
 
