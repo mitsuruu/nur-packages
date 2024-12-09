@@ -8,10 +8,10 @@ let
     hash = "sha256-26sWhTvB6K1i/K3fmwYg5pDIUi+7xs3dz8yVj5q7H0c=";
   };
 
-  appimageContents = appimageTools.extractType1 { inherit name src; };
+  appimageContents = appimageTools.extractType1 { inherit pname version src; };
 in
 appimageTools.wrapType1 {
-  inherit name src;
+  inherit pname version src;
 
   extraInstallCommands = ''
     install -m 444 -D ${appimageContents}/dev.suyu_emu.suyu.desktop -t $out/share/applications

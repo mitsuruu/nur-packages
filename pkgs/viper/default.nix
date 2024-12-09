@@ -16,7 +16,7 @@
   libGL,
   makeWrapper,
 }: let
-  pname = "viper";
+  pname = "viper-${version}";
   version = "1.8.5";
 
   src = fetchurl {
@@ -26,8 +26,7 @@
   };
 
   appimageContents = appimageTools.extractType2 {
-    name = "${pname}-${version}";
-    inherit src;
+    inherit src pname version;
   };
 
   libs = [

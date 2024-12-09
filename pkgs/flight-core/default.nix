@@ -16,7 +16,7 @@
   libGL,
   makeWrapper,
 }: let
-  pname = "flight-core";
+  pname = "flight-core-${version}";
   version = "2.23.1";
 
   src = fetchurl {
@@ -26,8 +26,7 @@
   };
 
   appimageContents = appimageTools.extractType2 {
-    name = "${pname}-${version}";
-    inherit src;
+    inherit pname version src;
   };
 
   libs = [
