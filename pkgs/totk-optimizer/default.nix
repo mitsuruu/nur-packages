@@ -1,15 +1,14 @@
 { lib, stdenv, fetchurl, unzip, zlib, xorg, autoPatchelfHook }:
 let
   version = "2.1.0";
-  pname = "${name}-${version}";
-  name = "totk-optimizer";
+  pname = "totk-optimizer";
   src = fetchurl {
     url = "https://github.com/MaxLastBreath/TOTK-mods/releases/download/manager-${version}/TOTK_Optimizer_${version}_Linux.zip";
     hash = "sha256-gHuW8TmdGAK64I1ETUFOpAFudF1Slytcx/nY0pS+/m0=";
   };
 in
 stdenv.mkDerivation {
-  inherit name src;
+  inherit pname version src;
 
   nativeBuildInputs = [ zlib autoPatchelfHook unzip xorg.libxcb ];
 

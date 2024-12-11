@@ -1,8 +1,7 @@
-{ lib, appimageTools, fetchurl }:
+{ appimageTools, fetchurl }:
 let
   version = "v0.0.3";
-  pname = "${name}-appimage-${version}";
-  name = "suyu";
+  pname = "suyu";
   src = fetchurl {
     url = "https://git.suyu.dev/suyu/suyu/releases/download/${version}/Suyu-Linux_x86_64.AppImage";
     hash = "sha256-26sWhTvB6K1i/K3fmwYg5pDIUi+7xs3dz8yVj5q7H0c=";
@@ -16,11 +15,11 @@ appimageTools.wrapType1 {
   extraInstallCommands = ''
     install -m 444 -D ${appimageContents}/dev.suyu_emu.suyu.desktop -t $out/share/applications
     substituteInPlace $out/share/applications/dev.suyu_emu.suyu.desktop \
-      --replace-fail 'Exec=suyu %f' 'Exec=${name} %f'
+      --replace-fail 'Exec=suyu %f' 'Exec=${pname} %f'
     cp -r ${appimageContents}/usr/share/icons $out/share
   '';
 
-  meta = with lib; {
+  meta = {
     homepage = "https://suyu-emu.org";
     changelog = "https://suyu-emu.org/entry";
     description = "An experimental Nintendo Switch emulator written in C++";

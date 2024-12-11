@@ -14,9 +14,8 @@
   libxcb,
   libgpg-error,
   libGL,
-  makeWrapper,
 }: let
-  pname = "flight-core-${version}";
+  pname = "flight-core";
   version = "2.23.1";
 
   src = fetchurl {
