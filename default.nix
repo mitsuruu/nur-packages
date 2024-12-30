@@ -11,6 +11,7 @@
   perfect-dark-jpn = (pkgs.callPackage ./pkgs/perfect-dark { }).jpn;
   perfect-dark-ntsc = (pkgs.callPackage ./pkgs/perfect-dark { }).ntsc;
   perfect-dark-pal = (pkgs.callPackage ./pkgs/perfect-dark { }).pal;
+  pixel-perfect-svg = pkgs.callPackage ./pkgs/pixel-perfect-svg { };
   rose-pine-sddm = pkgs.callPackage ./pkgs/rose-pine-sddm { };
   suyu = (pkgs.callPackage ./pkgs/suyu { }).suyu;
   suyu-appimage = (pkgs.callPackage ./pkgs/suyu { }).suyu-appimage;
