@@ -19,4 +19,6 @@
   tokyo-night-sddm = pkgs.callPackage ./pkgs/tokyo-night-sddm { };
   totk-optimizer = pkgs.callPackage ./pkgs/totk-optimizer { };
   viper = pkgs.callPackage ./pkgs/viper { };
+
+  linux_xanmod_edge = (pkgs.callPackage ./pkgs/xanmod-edge { }).linux_xanmod_edge;
 }
