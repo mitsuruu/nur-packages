@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
       - name: Check flake inputs
         uses: DeterminateSystems/flake-checker-action@v4
       - name: Install Nix
