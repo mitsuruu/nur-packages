@@ -1,23 +1,53 @@
-{ lib, stdenv, fetchurl, unzip, zlib, xorg, autoPatchelfHook }:
+{ appimageTools
+, lib
+, fetchurl
+, libthai
+, harfbuzz
+, fontconfig
+, freetype
+, libz
+, libX11
+, mesa
+, libdrm
+, fribidi
+, libxcb
+, libgpg-error
+, libGL
+,
+}:
 let
-  version = "2.1.0";
+  version = "3.1.6";
   pname = "totk-optimizer";
   src = fetchurl {
-    url = "https://github.com/MaxLastBreath/TOTK-mods/releases/download/manager-${version}/TOTK_Optimizer_${version}_Linux.zip";
-    hash = "sha256-gHuW8TmdGAK64I1ETUFOpAFudF1Slytcx/nY0pS+/m0=";
+    url = "https://github.com/MaxLastBreath/nx-optimizer/releases/download/manager-${version}/NX.Optimizer.${version}.AppImage";
+    hash = "sha256-Eq3gGntj9tI9VWLl9QXcueIN1e0LFj9TuIKy3BagBys=";
   };
+
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
+
+  libs = [
+    libthai
+    harfbuzz
+    fontconfig
+    freetype
+    libz
+    libX11
+    mesa
+    libdrm
+    fribidi
+    libxcb
+    libgpg-error
+    libGL
+  ];
 in
-stdenv.mkDerivation {
+appimageTools.wrapType2 {
   inherit pname version src;
-
-  nativeBuildInputs = [ zlib autoPatchelfHook unzip xorg.libxcb ];
-
-  installPhase = ''
-    mkdir -p $out/bin
-    runHook preInstall
-    ls
-    install -m755 'TOTK Optimizer ${version}' $out/bin/totk-optimizer
-    cp -r '_internal' $out/bin/
-    runHook postInstall
+  multiPkgs = null; # no 32bit needed
+  extraPkgs = p: (appimageTools.defaultFhsEnvArgs.multiPkgs p) ++ libs;
+  extraInstallCommands = ''
+    install -m 444 -D ${appimageContents}/${pname}.desktop -t $out/share/applications
+    cp -r ${appimageContents}/usr/share/icons $out/share
   '';
 }
