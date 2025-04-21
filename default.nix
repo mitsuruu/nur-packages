@@ -7,6 +7,7 @@
   citra-canary = (pkgs.callPackage ./pkgs/citra { }).canary;
   citra-nightly = (pkgs.callPackage ./pkgs/citra { }).nightly;
   flight-core = pkgs.callPackage ./pkgs/flight-core { };
+  gmm = pkgs.callPackage ./pkgs/gmm { };
   macos-cursors = pkgs.callPackage ./pkgs/macOS-cursors { };
   perfect-dark-jpn = (pkgs.callPackage ./pkgs/perfect-dark { }).jpn;
   perfect-dark-ntsc = (pkgs.callPackage ./pkgs/perfect-dark { }).ntsc;

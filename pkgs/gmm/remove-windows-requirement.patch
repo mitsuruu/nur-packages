@@ -1,0 +1,30 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index f3cca91..0828c53 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -29,6 +29,8 @@ toml = "0.8.20"
+ zip = "0.6"
+ sevenz-rust = "0.6.1"
+ unrar = "=0.5.8"
++
++[target."cfg(windows)".dependencies]
+ windows = { version = "0.61.1", features = ["Win32_UI_Shell", "Win32_Foundation", "Win32_UI_WindowsAndMessaging"] }
+ 
+ [build-dependencies]
+diff --git a/src/main.rs b/src/main.rs
+index 3141c57..2cbaf67 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -1431,6 +1431,12 @@ async fn select_file() -> CmdResult<Option<PathBuf>> { // Removed AppHandle
+     }
+ }
+ 
++#[cfg(not(target_os = "windows"))]
++#[command]
++fn launch_executable_elevated(path: String) -> Result<(), String> {
++    todo!()
++}
++
+ #[cfg(target_os = "windows")]
+ #[command]
+ fn launch_executable_elevated(path: String) -> Result<(), String> {
