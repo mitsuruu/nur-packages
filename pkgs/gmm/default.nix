@@ -14,17 +14,17 @@
 }:
 
 let
-  pname = "GMM";
-  version = "2.5.6";
+  pname = "gmm";
+  version = "2.5.3";
 
-  cargoHash = "sha256-OvbwgZcp0Y+U72088e8KJYLVqAQW1CQmFokTI6RkAPM=";
-  npmDepsHash = "sha256-lFqKS5xTWtYRFfTB6T/KTg6duDXysUsd7CrS6fznrbI=";
+  cargoHash = "sha256-ke32gJeVMh43YqSMJ++QX4evwZVTlXHzRvHPPug1x0g=";
+  npmDepsHash = "sha256-DtzHXsyudEXhD8+4FV8rw1DWmowlPxj3Bo+Xg/DaPJw=";
 
   src = fetchFromGitHub {
     owner = "Eidenz";
     repo = "GMM";
-    rev = "e4045f03cd6f841f80a8d7ed8b9e70f7e9177d4e";
-    hash = "sha256-qZRyHi57t0ASVOVjvf4k8Gp+ItGfVnnehrw04zU9/QU=";
+    rev = "db13cd657558c5f7b5dec185aced00dd87e9675c";
+    hash = "sha256-pEuM9y7+UKtqqmq4qE6z5iwFEUGfgA3LrRuVKQrOQPU=";
   };
 
   frontend-build = buildNpmPackage {
