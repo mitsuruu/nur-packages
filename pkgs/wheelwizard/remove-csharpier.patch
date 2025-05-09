@@ -1,0 +1,20 @@
+diff --git a/.config/dotnet-tools.json b/.config/dotnet-tools.json
+deleted file mode 100644
+index 393d187..0000000
+--- a/.config/dotnet-tools.json
++++ /dev/null
+@@ -1,13 +0,0 @@
+-{
+-  "version": 1,
+-  "isRoot": true,
+-  "tools": {
+-    "csharpier": {
+-      "version": "0.30.6",
+-      "commands": [
+-        "dotnet-csharpier"
+-      ],
+-      "rollForward": false
+-    }
+-  }
+-}
+\ No newline at end of file

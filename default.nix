@@ -18,6 +18,7 @@
   tokyo-night-sddm = pkgs.callPackage ./pkgs/tokyo-night-sddm { };
   totk-optimizer = pkgs.callPackage ./pkgs/totk-optimizer { };
   viper = pkgs.callPackage ./pkgs/viper { };
+  wheelwizard = pkgs.callPackage ./pkgs/wheelwizard { };
 
   # Patched packages
   gamescope-no-fast-math = pkgs.gamescope.overrideAttrs (_: {
