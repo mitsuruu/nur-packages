@@ -14,6 +14,7 @@
   perfect-dark-pal = (pkgs.callPackage ./pkgs/perfect-dark { }).pal;
   pixel-perfect-svg = pkgs.callPackage ./pkgs/pixel-perfect-svg { };
   rose-pine-sddm = pkgs.callPackage ./pkgs/rose-pine-sddm { };
+  sunshine-git = pkgs.callPackage ./pkgs/sunshine-git { };
   tokyo-night-gtk-icons = pkgs.callPackage ./pkgs/tokyo-night-gtk-icons { };
   tokyo-night-sddm = pkgs.callPackage ./pkgs/tokyo-night-sddm { };
   totk-optimizer = pkgs.callPackage ./pkgs/totk-optimizer { };
