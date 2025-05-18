@@ -4,8 +4,6 @@
   # lib = import ./lib { inherit pkgs; }; # functions
   # modules = import ./modules; # NixOS modules
   # overlays = import ./overlays; # nixpkgs overlays
-  citra-canary = (pkgs.callPackage ./pkgs/citra { }).canary;
-  citra-nightly = (pkgs.callPackage ./pkgs/citra { }).nightly;
   eden = pkgs.callPackage ./pkgs/eden { };
   flight-core = pkgs.callPackage ./pkgs/flight-core { };
   gmm = pkgs.callPackage ./pkgs/gmm { };
