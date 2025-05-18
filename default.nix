@@ -11,7 +11,6 @@
   gmm = pkgs.callPackage ./pkgs/gmm { };
   macos-cursors = pkgs.callPackage ./pkgs/macOS-cursors { };
   pixel-perfect-svg = pkgs.callPackage ./pkgs/pixel-perfect-svg { };
-  rose-pine-sddm = pkgs.callPackage ./pkgs/rose-pine-sddm { };
   sunshine-git = pkgs.callPackage ./pkgs/sunshine-git { };
   totk-optimizer = pkgs.callPackage ./pkgs/totk-optimizer { };
   viper = pkgs.callPackage ./pkgs/viper { };
