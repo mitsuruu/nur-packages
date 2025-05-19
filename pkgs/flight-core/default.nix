@@ -15,16 +15,16 @@
 
 let
   pname = "FlightCore";
-  version = "3.0.4";
+  version = "3.0.6";
 
-  cargoHash = "sha256-JFpT+cqnFbkmPzYUygTEbuTg7LwTx2gR86i7FzAH54E=";
+  cargoHash = "sha256-oy2IEsRggSGsGCuV3zFauGNr5/r0PDmkawh886mtXO4=";
   npmDepsHash = "sha256-DzPuvgmpaPTUUbrSnAVbll5mqZRPAWqHGdmNtgtLtU4=";
 
   src = fetchFromGitHub {
     owner = "R2NorthstarTools";
     repo = "FlightCore";
     rev = "v${version}";
-    hash = "sha256-rzBaZEnIaqxfyusVNTWU0qKggDnI1tSR7WN8HE6epWo=";
+    hash = "sha256-UgkGlb/Xcpm8znfXi62hRfbm5OrS6y5RT/tBfs4NS+U=";
   };
 
   frontend-build = buildNpmPackage {
