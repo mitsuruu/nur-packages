@@ -22,10 +22,14 @@
         };
       });
 
-      devShell = forAllSystems (system: import ./shell.nix {
+      devShell = forAllSystems (system: import ./shell.nix rec {
         inherit (self.checks.${system}.pre-commit-check) shellHook;
         pkgs = import nixpkgs { inherit system; };
-        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+        buildInputs =
+          self.checks.${system}.pre-commit-check.enabledPackages
+          ++ [
+            pkgs.nix-update
+          ];
       });
 
       legacyPackages = forAllSystems (system: import ./default.nix {
