@@ -15,7 +15,7 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
       - name: Check flake inputs
-        uses: DeterminateSystems/flake-checker-action@v10
+        uses: DeterminateSystems/flake-checker-action@v11
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
       - name: Check for update and perform update
